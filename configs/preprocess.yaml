@@ -1,0 +1,6 @@
+project_path: "."
+data_path: "data/gspc-return.csv"
+group_proportions: [0.5416416928587091, 0.07737738469410133, 0.15423476938820265, 0.2267461530589869]
+seq_length: 30
+selected_columns: ["Open", "High", "Low", "Close", "OpenSign", "HighSign", "LowSign", "CloseSign"]
+target_columns: ["Open", "High", "Low", "Close", "OpenSign", "HighSign", "LowSign", "CloseSign"]

@@ -1,0 +1,13 @@
+checkpoints
+data/*
+logs
+models
+notebooks/*
+outputs
+configs/ddconfigs
+
+.DS_Store
+
+
+!data/gspc-return.csv
+!notebooks/evaluation.ipynb

@@ -1,0 +1,57 @@
+project_path: "."
+model_name: l3-d48-8targets
+ddconfig_path: "configs/ddconfigs/gspc-return.json"
+selected_columns: ["Open", "High", "Low", "Close", "OpenSign", "HighSign", "LowSign", "CloseSign"]
+target_columns: ["Open", "High", "Low", "Close", "OpenSign", "HighSign", "LowSign", "CloseSign"]
+target_column_types:
+  Open: "real"
+  High: "real"
+  Low: "real"
+  Close: "real"
+  OpenSign: "categorical"
+  HighSign: "categorical"
+  LowSign: "categorical"
+  CloseSign: "categorical"
+
+seq_length: 30
+inference_batch_size: 3
+
+model_spec:
+  d_model: 48
+  nhead: 3
+  d_hid: 3
+  nlayers: 2
+
+training_spec:
+  device: "mps"
+  batch_size: 300
+  lr: 0.00001  # learning rate
+  epochs: 50
+  log_interval: 10
+  class_share_log_columns: ["OpenSign", "HighSign", "LowSign", "CloseSign"]
+  iter_save: 10
+  criterion:
+    Open: MSELoss
+    High: MSELoss
+    Low: MSELoss
+    Close: MSELoss
+    OpenSign: CrossEntropyLoss
+    HighSign: CrossEntropyLoss
+    LowSign: CrossEntropyLoss
+    CloseSign: CrossEntropyLoss
+  optimizer:
+    name: Adam
+  scheduler:
+    name: StepLR
+    step_size: 1.0
+    gamma: 0.99
+  continue_training: true
+  loss_weights:
+    Open: 3.0
+    High: 3.0
+    Low: 3.0
+    Close: 3.0
+    OpenSign: 1.0
+    HighSign: 1.0
+    LowSign: 1.0
+    CloseSign: 1.0

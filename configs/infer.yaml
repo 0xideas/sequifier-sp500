@@ -1,0 +1,21 @@
+project_path: "."
+ddconfig_path: "configs/ddconfigs/gspc-return.json"
+model_path: "models/sequifier-l3-d48-8targets-best-100.onnx"
+
+selected_columns: ["Open", "High", "Low", "Close", "OpenSign", "HighSign", "LowSign", "CloseSign"]
+target_columns: ["Open", "High", "Low", "Close", "OpenSign", "HighSign", "LowSign", "CloseSign"]
+target_column_types:
+  Open: "real"
+  High: "real"
+  Low: "real"
+  Close: "real"
+  OpenSign: "categorical"
+  HighSign: "categorical"
+  LowSign: "categorical"
+  CloseSign: "categorical"
+
+device: "cpu"
+seq_length: 30
+inference_batch_size: 3
+map_to_id: true
+auto_regression: false
